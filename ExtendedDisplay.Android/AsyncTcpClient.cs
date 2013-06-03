@@ -70,6 +70,11 @@ namespace ExtendedDisplay.Client
             
             Task.Factory.StartNew(this.Listen);
         }
+
+        public void Disconnect()
+        {
+            this.tcpClient.Close();
+        }
         
         public void SendAsync(string data)
         {

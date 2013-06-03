@@ -18,6 +18,37 @@ namespace ExtendedDisplay.Android
     {
         int count = 1;
 
+        private readonly AsyncTcpClient tcpClient;
+
+        private ImageView imageView;
+
+        public Activity1()
+        {
+            var tcpClient = new AsyncTcpClient();
+            tcpClient.DataReceived += (object sender, GenericDataEventArgs<string> args) =>
+            {
+                var bitmapContainer = JsonConvert.DeserializeObject<BitmapContainer>(args.Value);
+
+                var oldImage = imageView.ImageMatrix;
+
+                var image = bitmapContainer.EncodedBitmap.ToUIImage();
+                if (image != null)
+                {
+                    this.RunOnUiThread(() => 
+                                       {
+                        //                        oldImage.Dispose();
+                        //                        oldImage = null;
+
+                        ((BitmapDrawable)imageView.Drawable).Bitmap.Recycle();
+
+                        imageView.SetImageBitmap(image);
+                        //                        imgDisplay.Image = args.Value.ToUIImage();
+                    });
+                }
+            };
+
+        }
+
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
@@ -34,31 +65,21 @@ namespace ExtendedDisplay.Android
                 button.Text = string.Format("{0} clicks!", count++);
             };
 
-            ImageView imageView = FindViewById<ImageView>(Resource.Id.imageView1);
+            this.imageView = FindViewById<ImageView>(Resource.Id.imageView1);
 
-            var tcpClient = new AsyncTcpClient();
-            tcpClient.DataReceived += (object sender, GenericDataEventArgs<string> args) =>
-            {
-                var bitmapContainer = JsonConvert.DeserializeObject<BitmapContainer>(args.Value);
+            tcpClient.Connect(IPAddress.Parse("192.168.3.183"), 8080);
+        }
 
-                var oldImage = imageView.ImageMatrix;
+        protected override void OnPause()
+        {
+            base.OnPause();
+        }
 
-                var image = bitmapContainer.EncodedBitmap.ToUIImage();
-                if (image != null)
-                {
-                    this.RunOnUiThread(() => 
-                                            {
-//                        oldImage.Dispose();
-//                        oldImage = null;
+        protected override void OnStop()
+        {
+            base.OnStop();
 
-                        ((BitmapDrawable)imageView.Drawable).Bitmap.Recycle();
-
-                        imageView.SetImageBitmap(image);
-//                        imgDisplay.Image = args.Value.ToUIImage();
-                    });
-                }
-            };
-            tcpClient.Connect(IPAddress.Parse("192.168.3.218"), 8080);
+            tcpClient.Disconnect();
         }
     }
 }

@@ -1,1 +1,7 @@
 *.DS_Store
+*.userprefs
+*.suo
+ExtendedDisplay.Android/bin/*
+ExtendedDisplay.Android/obj/*
+ExtendedDisplay.iOS/bin/*
+ExtendedDisplay.iOS/obj/*
