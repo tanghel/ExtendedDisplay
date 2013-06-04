@@ -57,11 +57,11 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ExtendedDisplay.Framework.CrossWin\ExtendedDisplay.Framework.CrossWin.csproj">
-      <Project>{41842952-30d4-44dc-88d2-b96c19b034d0}</Project>
+      <Project>{41842952-30D4-44DC-88D2-B96C19B034D0}</Project>
       <Name>ExtendedDisplay.Framework.CrossWin</Name>
     </ProjectReference>
     <ProjectReference Include="..\ExtendedDisplay.Framework.Win\ExtendedDisplay.Framework.Win.csproj">
-      <Project>{050029fa-5fa6-45e0-a49f-deabdcdf9da9}</Project>
+      <Project>{050029FA-5FA6-45E0-A49F-DEABDCDF9DA9}</Project>
       <Name>ExtendedDisplay.Framework.Win</Name>
     </ProjectReference>
   </ItemGroup>

@@ -10,6 +10,7 @@
     <OutputType>Exe</OutputType>
     <RootNamespace>ExtendedDisplay.iOS</RootNamespace>
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
+    <AssemblyName>ExtendedDisplay</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
     <DebugSymbols>true</DebugSymbols>
@@ -22,7 +23,6 @@
     <ConsolePause>false</ConsolePause>
     <MtouchLink>None</MtouchLink>
     <MtouchDebug>true</MtouchDebug>
-    <AssemblyName>ExtendedDisplay</AssemblyName>
     <MtouchI18n />
     <MtouchArch>ARMv7</MtouchArch>
   </PropertyGroup>
@@ -34,7 +34,8 @@
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
     <MtouchLink>None</MtouchLink>
-    <AssemblyName>ExtendedDisplay.MacOsX</AssemblyName>
+    <MtouchI18n />
+    <MtouchArch>ARMv7</MtouchArch>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
     <DebugSymbols>true</DebugSymbols>
@@ -47,7 +48,6 @@
     <ConsolePause>false</ConsolePause>
     <MtouchDebug>true</MtouchDebug>
     <CodesignKey>iPhone Developer</CodesignKey>
-    <AssemblyName>ExtendedDisplay</AssemblyName>
     <IpaPackageName />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
@@ -58,8 +58,6 @@
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
     <CodesignKey>iPhone Developer</CodesignKey>
-    <CodesignProvision>A733BAEC-8AC2-4F53-A799-ADDBA58B6E00</CodesignProvision>
-    <AssemblyName>ExtendedDisplay</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Ad-Hoc|iPhone' ">
     <DebugType>none</DebugType>
@@ -71,7 +69,6 @@
     <ConsolePause>false</ConsolePause>
     <CodesignProvision>Automatic:AdHoc</CodesignProvision>
     <CodesignKey>iPhone Distribution</CodesignKey>
-    <AssemblyName>ExtendedDisplay</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'AppStore|iPhone' ">
     <DebugType>none</DebugType>
@@ -82,7 +79,6 @@
     <ConsolePause>false</ConsolePause>
     <CodesignKey>iPhone Distribution</CodesignKey>
     <CodesignProvision>Automatic:AppStore</CodesignProvision>
-    <AssemblyName>ExtendedDisplay</AssemblyName>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -113,9 +109,15 @@
     <Compile Include="GenericDataEventHandler.cs" />
     <Compile Include="ConnectionInputWindow.cs" />
     <Compile Include="AsyncTcpServer.cs" />
+    <Compile Include="MainViewController.cs" />
+    <Compile Include="MainViewController.designer.cs">
+      <DependentUpon>MainViewController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="ExtendedDisplayViewController.xib" />
+    <InterfaceDefinition Include="MainViewController_iPhone.xib" />
+    <InterfaceDefinition Include="MainViewController_iPad.xib" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.MonoTouch.CSharp.targets" />
   <ItemGroup>
@@ -125,7 +127,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ExtendedDisplay.Framework.CrossIos\ExtendedDisplay.Framework.CrossIos.csproj">
-      <Project>{2d54b12f-e487-4e56-99ac-4f6ee27f3c1b}</Project>
+      <Project>{6955204F-82AC-40AC-908C-5824CFDCD70A}</Project>
       <Name>ExtendedDisplay.Framework.CrossIos</Name>
     </ProjectReference>
   </ItemGroup>
