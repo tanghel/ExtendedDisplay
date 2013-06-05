@@ -11,7 +11,7 @@ namespace ExtendedDisplay.iOS
     {
         // class-level declarations
         UIWindow window;
-        ExtendedDisplayViewController viewController;
+        MainViewController viewController;
 
         public AppDelegate()
         {
@@ -29,7 +29,7 @@ namespace ExtendedDisplay.iOS
         {
             window = new UIWindow(UIScreen.MainScreen.Bounds);
 			
-            viewController = new ExtendedDisplayViewController();
+            viewController = new MainViewController();
             window.RootViewController = viewController;
             window.MakeKeyAndVisible();
 			

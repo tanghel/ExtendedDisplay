@@ -58,7 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ExtendedDisplay.Framework.CrossWin\ExtendedDisplay.Framework.CrossWin.csproj">
-      <Project>{41842952-30d4-44dc-88d2-b96c19b034d0}</Project>
+      <Project>{41842952-30D4-44DC-88D2-B96C19B034D0}</Project>
       <Name>ExtendedDisplay.Framework.CrossWin</Name>
     </ProjectReference>
   </ItemGroup>

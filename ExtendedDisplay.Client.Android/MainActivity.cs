@@ -7,7 +7,7 @@ using Android.Views;
 using Android.Widget;
 using Android.OS;
 using System.Net;
-using ExtendedDisplay.Android.Resources;
+using ExtendedDisplay.Android;
 using Newtonsoft.Json;
 using Android.Graphics.Drawables;
 
@@ -67,7 +67,7 @@ namespace ExtendedDisplay.Android
 
             this.imageView = FindViewById<ImageView>(Resource.Id.imageView1);
 
-            tcpClient.Connect(IPAddress.Parse("192.168.3.183"), 8080);
+            tcpClient.Connect(IPAddress.Parse("192.168.0.159"), 8080);
         }
 
         protected override void OnPause()

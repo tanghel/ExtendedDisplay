@@ -66,7 +66,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ExtendedDisplay.Framework.CrossAndroid\ExtendedDisplay.Framework.CrossAndroid.csproj">
-      <Project>{05f88f52-1bbc-46a9-870d-a92ecdd3710f}</Project>
+      <Project>{05F88F52-1BBC-46A9-870D-A92ECDD3710F}</Project>
       <Name>ExtendedDisplay.Framework.CrossAndroid</Name>
     </ProjectReference>
   </ItemGroup>
