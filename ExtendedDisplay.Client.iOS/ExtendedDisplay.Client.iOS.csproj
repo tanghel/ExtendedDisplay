@@ -109,10 +109,8 @@
     </Compile>
     <Compile Include="ClientExtensions.cs" />
     <Compile Include="BitmapContainer.cs" />
-    <Compile Include="AsyncTcpClient.cs" />
     <Compile Include="GenericDataEventHandler.cs" />
     <Compile Include="ConnectionInputWindow.cs" />
-    <Compile Include="AsyncTcpServer.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="ExtendedDisplayViewController.xib" />
