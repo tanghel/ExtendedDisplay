@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>12.0.0</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{EFCD84D1-4D62-42E5-ABA8-2A455B5FE0A4}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>ExtendedDisplay.Framework.MacOsX</RootNamespace>
+    <AssemblyName>ExtendedDisplay.Framework.MacOsX</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="..\ExtendedDisplay.Framework.Win\Cross\AsyncTcpClient.cs">
+      <Link>Cross\AsyncTcpClient.cs</Link>
+    </Compile>
+    <Compile Include="..\ExtendedDisplay.Framework.Win\Cross\AsyncTcpServer.cs">
+      <Link>Cross\AsyncTcpServer.cs</Link>
+    </Compile>
+    <Compile Include="..\ExtendedDisplay.Framework.Win\Cross\BitmapContainer.cs">
+      <Link>Cross\BitmapContainer.cs</Link>
+    </Compile>
+    <Compile Include="..\ExtendedDisplay.Framework.Win\Cross\CaptureService.cs">
+      <Link>Cross\CaptureService.cs</Link>
+    </Compile>
+    <Compile Include="..\ExtendedDisplay.Framework.Win\Cross\CrossExtensions.cs">
+      <Link>Cross\CrossExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\ExtendedDisplay.Framework.Win\Cross\GenericDataEventHandler.cs">
+      <Link>Cross\GenericDataEventHandler.cs</Link>
+    </Compile>
+    <Compile Include="..\ExtendedDisplay.Framework.Win\Cross\IScreenCapture.cs">
+      <Link>Cross\IScreenCapture.cs</Link>
+    </Compile>
+    <Compile Include="ScreenCapture.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Folder Include="Cross\" />
+  </ItemGroup>
+</Project>

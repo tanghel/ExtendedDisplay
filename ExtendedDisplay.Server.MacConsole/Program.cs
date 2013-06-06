@@ -2,6 +2,7 @@ using System;
 using ExtendedDisplay.Framework.Cross;
 using System.Net;
 using System.Threading.Tasks;
+using ExtendedDisplay.Client.MacOsX;
 
 namespace ExtendedDisplay.Client.MacConsole
 {

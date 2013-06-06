@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.IO;
 using ExtendedDisplay.Framework.Cross;
 
-namespace ExtendedDisplay.Client.MacConsole
+namespace ExtendedDisplay.Client.MacOsX
 {
     public class ScreenCapture : IScreenCapture
     {
