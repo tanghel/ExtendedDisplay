@@ -5,12 +5,12 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>12.0.0</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{6955204F-82AC-40AC-908C-5824CFDCD70A}</ProjectGuid>
+    <ProjectGuid>{DFA52ADF-DDB8-4014-B91D-108E61C9A539}</ProjectGuid>
     <ProjectTypeGuids>{6BC8ED88-2882-458C-8E55-DFD12B67127B};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
-    <RootNamespace>ExtendedDisplay.Framework.CrossIos</RootNamespace>
+    <RootNamespace>ExtendedDisplay.Framework.iOS</RootNamespace>
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
-    <AssemblyName>ExtendedDisplay.Framework.CrossIos</AssemblyName>
+    <AssemblyName>ExtendedDisplay.Framework.iOS</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -36,23 +36,33 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
+    <Folder Include="Cross\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
-    <Compile Include="..\ExtendedDisplay.Framework.CrossWin\AsyncTcpClient.cs">
-      <Link>AsyncTcpClient.cs</Link>
+    <Compile Include="..\ExtendedDisplay.Framework.Win\Cross\AsyncTcpClient.cs">
+      <Link>Cross\AsyncTcpClient.cs</Link>
     </Compile>
-    <Compile Include="..\ExtendedDisplay.Framework.CrossWin\AsyncTcpServer.cs">
-      <Link>AsyncTcpServer.cs</Link>
+    <Compile Include="..\ExtendedDisplay.Framework.Win\Cross\AsyncTcpServer.cs">
+      <Link>Cross\AsyncTcpServer.cs</Link>
     </Compile>
-    <Compile Include="..\ExtendedDisplay.Framework.CrossWin\BitmapContainer.cs">
-      <Link>BitmapContainer.cs</Link>
+    <Compile Include="..\ExtendedDisplay.Framework.Win\Cross\BitmapContainer.cs">
+      <Link>Cross\BitmapContainer.cs</Link>
     </Compile>
-    <Compile Include="..\ExtendedDisplay.Framework.CrossWin\CrossExtensions.cs">
-      <Link>CrossExtensions.cs</Link>
+    <Compile Include="..\ExtendedDisplay.Framework.Win\Cross\CrossExtensions.cs">
+      <Link>Cross\CrossExtensions.cs</Link>
     </Compile>
-    <Compile Include="..\ExtendedDisplay.Framework.CrossWin\GenericDataEventHandler.cs">
-      <Link>GenericDataEventHandler.cs</Link>
+    <Compile Include="..\ExtendedDisplay.Framework.Win\Cross\GenericDataEventHandler.cs">
+      <Link>Cross\GenericDataEventHandler.cs</Link>
     </Compile>
+    <Compile Include="IosExtensions.cs" />
+    <Compile Include="CaptureService.cs" />
+    <Compile Include="..\ExtendedDisplay.Framework.Win\Cross\CaptureService.cs">
+      <Link>Cross\CaptureService.cs</Link>
+    </Compile>
+    <Compile Include="..\ExtendedDisplay.Framework.Win\Cross\IScreenCapture.cs">
+      <Link>Cross\IScreenCapture.cs</Link>
+    </Compile>
+    <Compile Include="ScreenCapture.cs" />
   </ItemGroup>
 </Project>

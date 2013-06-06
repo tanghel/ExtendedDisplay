@@ -46,21 +46,22 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DisplayChanger.cs" />
-    <Compile Include="Extensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ScreenCapturer.cs" />
     <Compile Include="Stopwatch.cs" />
     <Compile Include="UnsafeBitmap.cs" />
     <Compile Include="WinApiExtensions.cs" />
+    <Compile Include="Cross\AsyncTcpClient.cs" />
+    <Compile Include="Cross\AsyncTcpServer.cs" />
+    <Compile Include="Cross\BitmapContainer.cs" />
+    <Compile Include="Cross\CrossExtensions.cs" />
+    <Compile Include="Cross\GenericDataEventHandler.cs" />
+    <Compile Include="WinExtensions.cs" />
+    <Compile Include="Cross\IScreenCapture.cs" />
+    <Compile Include="Cross\CaptureService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ExtendedDisplay.Framework.CrossWin\ExtendedDisplay.Framework.CrossWin.csproj">
-      <Project>{41842952-30D4-44DC-88D2-B96C19B034D0}</Project>
-      <Name>ExtendedDisplay.Framework.CrossWin</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
@@ -70,4 +71,7 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  <ItemGroup>
+    <Folder Include="Cross\" />
+  </ItemGroup>
 </Project>

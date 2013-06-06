@@ -35,23 +35,33 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="..\ExtendedDisplay.Framework.CrossWin\AsyncTcpClient.cs">
-      <Link>Framework\AsyncTcpClient.cs</Link>
-    </Compile>
-    <Compile Include="..\ExtendedDisplay.Framework.CrossWin\AsyncTcpServer.cs">
-      <Link>Framework\AsyncTcpServer.cs</Link>
-    </Compile>
-    <Compile Include="..\ExtendedDisplay.Framework.CrossWin\BitmapContainer.cs">
-      <Link>Framework\BitmapContainer.cs</Link>
-    </Compile>
-    <Compile Include="..\ExtendedDisplay.Framework.CrossWin\CrossExtensions.cs">
-      <Link>Framework\CrossExtensions.cs</Link>
-    </Compile>
-    <Compile Include="..\ExtendedDisplay.Framework.CrossWin\GenericDataEventHandler.cs">
-      <Link>Framework\GenericDataEventHandler.cs</Link>
-    </Compile>
     <Compile Include="ScreenCapturer.cs" />
     <Compile Include="Stopwatch.cs" />
+    <Compile Include="..\ExtendedDisplay.Framework.Win\Cross\AsyncTcpClient.cs">
+      <Link>Framework\AsyncTcpClient.cs</Link>
+    </Compile>
+    <Compile Include="..\ExtendedDisplay.Framework.Win\Cross\AsyncTcpServer.cs">
+      <Link>Framework\AsyncTcpServer.cs</Link>
+    </Compile>
+    <Compile Include="..\ExtendedDisplay.Framework.Win\Cross\BitmapContainer.cs">
+      <Link>Framework\BitmapContainer.cs</Link>
+    </Compile>
+    <Compile Include="..\ExtendedDisplay.Framework.Win\Cross\CaptureService.cs">
+      <Link>Framework\CaptureService.cs</Link>
+    </Compile>
+    <Compile Include="..\ExtendedDisplay.Framework.Win\Cross\CrossExtensions.cs">
+      <Link>Framework\CrossExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\ExtendedDisplay.Framework.Win\Cross\GenericDataEventHandler.cs">
+      <Link>Framework\GenericDataEventHandler.cs</Link>
+    </Compile>
+    <Compile Include="..\ExtendedDisplay.Framework.Win\Cross\IScreenCapture.cs">
+      <Link>Framework\IScreenCapture.cs</Link>
+    </Compile>
+    <Compile Include="ScreenCapture.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Folder Include="Framework\" />
+  </ItemGroup>
 </Project>

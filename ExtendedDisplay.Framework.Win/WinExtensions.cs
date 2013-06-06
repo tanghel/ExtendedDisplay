@@ -5,7 +5,7 @@ using System.Drawing.Imaging;
 
 namespace ExtendedDisplay
 {
-    public static class Extensions
+    public static class WinExtensions
     {
         private static ImageCodecInfo GetEncoder(ImageFormat format)
         {

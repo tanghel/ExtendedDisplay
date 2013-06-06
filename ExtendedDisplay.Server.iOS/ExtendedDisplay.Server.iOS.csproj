@@ -1,45 +1,38 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">iPhoneSimulator</Platform>
-    <ProductVersion>10.0.0</ProductVersion>
+    <ProductVersion>12.0.0</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{0D9CCF18-A89B-49E2-9D3E-787283A36F39}</ProjectGuid>
+    <ProjectGuid>{5509E9E3-F811-47DD-A366-18B4B51EEC69}</ProjectGuid>
     <ProjectTypeGuids>{6BC8ED88-2882-458C-8E55-DFD12B67127B};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Exe</OutputType>
-    <RootNamespace>ExtendedDisplay.iOS</RootNamespace>
+    <RootNamespace>ExtendedDisplay.Server.iOS</RootNamespace>
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
-    <AssemblyName>ExtendedDisplay</AssemblyName>
+    <AssemblyName>ExtendedDisplayServeriOS</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
     <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\iPhoneSimulator\Debug</OutputPath>
-    <DefineConstants>DEBUG;MONOTOUCH;</DefineConstants>
+    <DefineConstants>DEBUG;</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
     <MtouchLink>None</MtouchLink>
     <MtouchDebug>true</MtouchDebug>
-    <MtouchI18n />
-    <MtouchArch>ARMv7</MtouchArch>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
-    <DebugType>none</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\iPhoneSimulator\Release</OutputPath>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
     <MtouchLink>None</MtouchLink>
-    <MtouchI18n />
-    <MtouchArch>ARMv7</MtouchArch>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
     <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\iPhone\Debug</OutputPath>
     <DefineConstants>DEBUG;</DefineConstants>
@@ -48,10 +41,8 @@
     <ConsolePause>false</ConsolePause>
     <MtouchDebug>true</MtouchDebug>
     <CodesignKey>iPhone Developer</CodesignKey>
-    <IpaPackageName />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
-    <DebugType>none</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\iPhone\Release</OutputPath>
     <ErrorReport>prompt</ErrorReport>
@@ -60,18 +51,16 @@
     <CodesignKey>iPhone Developer</CodesignKey>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Ad-Hoc|iPhone' ">
-    <DebugType>none</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\iPhone\Ad-Hoc</OutputPath>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <BuildIpa>true</BuildIpa>
+    <CodesignKey>iPhone Distribution</CodesignKey>
     <ConsolePause>false</ConsolePause>
     <CodesignProvision>Automatic:AdHoc</CodesignProvision>
-    <CodesignKey>iPhone Distribution</CodesignKey>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'AppStore|iPhone' ">
-    <DebugType>none</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\iPhone\AppStore</OutputPath>
     <ErrorReport>prompt</ErrorReport>
@@ -85,7 +74,6 @@
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="monotouch" />
-    <Reference Include="MonoTouch.Dialog-1" />
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\Dependencies\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -99,30 +87,15 @@
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
-    <Compile Include="ExtendedDisplayViewController.cs" />
-    <Compile Include="ExtendedDisplayViewController.designer.cs">
-      <DependentUpon>ExtendedDisplayViewController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ClientExtensions.cs" />
-    <Compile Include="BitmapContainer.cs" />
-    <Compile Include="GenericDataEventHandler.cs" />
-    <Compile Include="ConnectionInputWindow.cs" />
-    <Compile Include="MainViewController.cs" />
-    <Compile Include="MainViewController.designer.cs">
-      <DependentUpon>MainViewController.cs</DependentUpon>
+    <Compile Include="ExtendedDisplay_Server_iOSViewController.cs" />
+    <Compile Include="ExtendedDisplay_Server_iOSViewController.designer.cs">
+      <DependentUpon>ExtendedDisplay_Server_iOSViewController.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <InterfaceDefinition Include="ExtendedDisplayViewController.xib" />
-    <InterfaceDefinition Include="MainViewController_iPhone.xib" />
-    <InterfaceDefinition Include="MainViewController_iPad.xib" />
+    <InterfaceDefinition Include="ExtendedDisplay_Server_iOSViewController.xib" />
   </ItemGroup>
-  <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.MonoTouch.CSharp.targets" />
-  <ItemGroup>
-    <Content Include="Settings.bundle\Root.plist">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <ProjectReference Include="..\ExtendedDisplay.Framework.iOS\ExtendedDisplay.Framework.iOS.csproj">
       <Project>{DFA52ADF-DDB8-4014-B91D-108E61C9A539}</Project>
