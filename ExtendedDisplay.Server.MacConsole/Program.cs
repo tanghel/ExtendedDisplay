@@ -28,20 +28,8 @@ namespace ExtendedDisplay.Client.MacConsole
                 AsyncTcpServer.Instance.Write(jsonString);
             };
             CaptureService.Instance.Start();
-//            ScreenCapturer.Instance.ScreenCaptured += (sender, e) =>
-//            {
-//                string jsonString = null;
-//
-//                e.Value.Created = DateTime.Now;
-//
-//                jsonString = "{" + string.Format("\"CursorX\":0,\"CursorY\":0,\"EncodedBitmap\":\"{0}\"", e.Value.EncodedBitmap) + "}";
-//
-////                Stopwatch.Measure("JsonParse", () => { jsonString = JsonConvert.SerializeObject(e.Value); });
-//                Stopwatch.Measure("TcpSend", () => { AsyncTcpServer.Instance.Write(jsonString); });
-//            };
-//            ScreenCapturer.Instance.Start();
 
-//            System.Console.WriteLine("Listening for incoming connections on ip addresses {0}, port {1}. press any key to terminate the app..", string.Join(", ", GetIpAddresses()), PORT);
+
             System.Console.WriteLine("Listening for incoming connections...");
             System.Console.ReadLine();
 

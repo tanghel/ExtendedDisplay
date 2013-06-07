@@ -13,12 +13,20 @@ namespace ExtendedDisplay.Server.iOS
 	{
 		[Outlet]
 		MonoTouch.UIKit.UILabel lblHelloWorld { get; set; }
+
+		[Outlet]
+		MonoTouch.UIKit.UIButton btnClear { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{
 			if (lblHelloWorld != null) {
 				lblHelloWorld.Dispose ();
 				lblHelloWorld = null;
+			}
+
+			if (btnClear != null) {
+				btnClear.Dispose ();
+				btnClear = null;
 			}
 		}
 	}

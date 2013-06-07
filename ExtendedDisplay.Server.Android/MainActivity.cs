@@ -17,6 +17,7 @@ using Newtonsoft.Json;
 using System.Net.NetworkInformation;
 using System.Net.Sockets;
 using System.Linq;
+using Android.Widget;
 
 namespace ExtendedDisplay.Server.Android
 {
@@ -48,6 +49,8 @@ namespace ExtendedDisplay.Server.Android
             return iplist[0];
         }
 
+        private DrawingView drawingView;
+
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
@@ -58,39 +61,45 @@ namespace ExtendedDisplay.Server.Android
             // Get our button from the layout resource,
             // and attach an event to it
             Button button = FindViewById<Button>(Resource.Id.myButton);
-			
+            button.Text = GetIPAddress().ToString();
+
             button.Click += delegate
             {
                 button.Text = string.Format("{0} clicks!", count++);
             };
 
-//            Task.Factory.StartNew(() =>
-//            {
-//                Thread.Sleep(5000);
-//
-//                var rootView = Window.DecorView.RootView;
-//                rootView.DrawingCacheEnabled = true;
-//                var bitmap = rootView.GetDrawingCache(true);
-//
-//                using (var memoryStream = new MemoryStream())
-//                {
-//                    bitmap.Compress(Bitmap.CompressFormat.Jpeg, 70, memoryStream);
-//
-//                    var bytes = memoryStream.ToArray();
-//                }
-//            });
+            this.drawingView = new DrawingView(this.ApplicationContext);
 
-//            var address = GetIPAddress();
+            this.AddContentView(this.drawingView, new LinearLayout.LayoutParams(LinearLayout.LayoutParams.FillParent, LinearLayout.LayoutParams.FillParent));
 
-//            AsyncTcpServer.Initialize(IPAddress.Any, PORT);
-//            AsyncTcpServer.Instance.Start();
-//
-//            CaptureService.Initialize(new ScreenCapture(this.Window.DecorView.RootView), 1000);
-//            CaptureService.Instance.ScreenCaptured += (sender, args) => 
-//            {
-//                AsyncTcpServer.Instance.Write(JsonConvert.SerializeObject(args.Value));
-//            };
-//            CaptureService.Instance.Start();
+            this.drawingView.Invalidate();
+
+            AsyncTcpServer.Initialize(IPAddress.Any, PORT);
+            AsyncTcpServer.Instance.Start();
+
+            CaptureService.Initialize(new ScreenCapture(this.Window.DecorView.RootView), 1000);
+            CaptureService.Instance.ScreenCaptured += (sender, args) => 
+            {
+                AsyncTcpServer.Instance.Write(JsonConvert.SerializeObject(args.Value));
+            };
+            CaptureService.Instance.Start();
+        }
+
+        public override bool OnTouchEvent(MotionEvent e)
+        {
+            switch (e.Action)
+            {
+                case MotionEventActions.Move:
+                    this.drawingView.PointToDraw = new PointF(e.RawX, e.RawY - 45);
+                    break;
+                case MotionEventActions.Down:
+                    this.drawingView.PointToDraw = new PointF(e.RawX, e.RawY - 45);
+                    break;
+                default:
+                    break;
+            }
+
+            return base.OnTouchEvent(e);
         }
     }
 }

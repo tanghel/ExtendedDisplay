@@ -3,6 +3,7 @@ using System.Text;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading.Tasks;
+using System;
 
 namespace ExtendedDisplay.Android
 {
@@ -33,23 +34,29 @@ namespace ExtendedDisplay.Android
             var responseBytes = new byte[BUFFER_SIZE];
             
             var responseBuilder = new StringBuilder();
-            while (true)
+            try
             {
-                var length = stream.Read(responseBytes, 0, BUFFER_SIZE);
-                
-                var responseString = Encoding.ASCII.GetString(responseBytes.Take(length).ToArray());
-                
-                responseBuilder.Append(responseString);
-                
-                if (responseString.Contains(ClientExtensions.END_OF_TRANSMISSION_CHARACTER))
+                while (true)
                 {
-                    var index = responseBuilder.ToString().IndexOf(ClientExtensions.END_OF_TRANSMISSION_CHARACTER);
+                    var length = stream.Read(responseBytes, 0, BUFFER_SIZE);
                     
-                    responseBuilder.Remove(index, 1);
+                    var responseString = Encoding.ASCII.GetString(responseBytes.Take(length).ToArray());
                     
-                    this.NotifyDataReceived(responseBuilder.ToString().Substring(0, index));
-                    responseBuilder.Remove(0, index);
+                    responseBuilder.Append(responseString);
+                    
+                    if (responseString.Contains(ClientExtensions.END_OF_TRANSMISSION_CHARACTER))
+                    {
+                        var index = responseBuilder.ToString().IndexOf(ClientExtensions.END_OF_TRANSMISSION_CHARACTER);
+                        
+                        responseBuilder.Remove(index, 1);
+                        
+                        this.NotifyDataReceived(responseBuilder.ToString().Substring(0, index));
+                        responseBuilder.Remove(0, index);
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
             }
         }
         

@@ -24,7 +24,7 @@ namespace ExtendedDisplay.Android
 
         public Activity1()
         {
-            var tcpClient = new AsyncTcpClient();
+            tcpClient = new AsyncTcpClient();
             tcpClient.DataReceived += (object sender, GenericDataEventArgs<string> args) =>
             {
                 var bitmapContainer = JsonConvert.DeserializeObject<BitmapContainer>(args.Value);
@@ -67,7 +67,7 @@ namespace ExtendedDisplay.Android
 
             this.imageView = FindViewById<ImageView>(Resource.Id.imageView1);
 
-            tcpClient.Connect(IPAddress.Parse("192.168.0.159"), 8080);
+            tcpClient.Connect(IPAddress.Parse("192.168.1.6"), 8080);
         }
 
         protected override void OnPause()

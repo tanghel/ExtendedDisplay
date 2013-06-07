@@ -107,6 +107,16 @@ namespace ExtendedDisplay.iOS
 
             this.btnConnect.TouchUpInside += (sender, e) => this.Connect();
             this.btnDisconnect.TouchUpInside += (sender, e) => this.Disconnect();
+
+            UIApplication.SharedApplication.IdleTimerDisabled = true;
+        }
+
+        [Obsolete ("Deprecated in iOS 6.0")]
+        public override void ViewDidUnload()
+        {
+            base.ViewDidUnload();
+
+            UIApplication.SharedApplication.IdleTimerDisabled = false;
         }
 
         [Obsolete ("Deprecated in iOS6. Replace it with both GetSupportedInterfaceOrientations and PreferredInterfaceOrientationForPresentation")]
